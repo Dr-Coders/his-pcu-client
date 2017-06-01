@@ -1,0 +1,44 @@
+<section class="content-header">
+    <h1 class="pageHeader">
+        <a href="/afproject/pcusheet" target="_self">PCU Sheet</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">PCU Sheet</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box box-primary">
+        <form class="search-form">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Enter Patient ID">
+
+                <div class="input-group-btn">
+                    <button type="submit" name="submit" class="btn btn-warning btn-flat"><i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="nav-tabs-custom transparenta">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#personal" data-toggle="tab">Personal Details</a></li>
+            <li><a href="#admission" data-toggle="tab">Admission Details</a></li>
+            <li><a href="#status" data-toggle="tab">Current Status</a></li>
+            <li><a href="#prescription" data-toggle="tab">Prescription Details</a></li>
+            <li><a href="#drugs" data-toggle="tab">Prescribed Drugs</a></li>
+            <li><a href="#labtest" data-toggle="tab">Lab Tests & Lab Results</a></li>
+        </ul>
+        <div class="tab-content transparenta">
+            <div class="tab-pane active" id="personal" ng-include="'../pages/pcusheet/personal.html'"></div>
+            <div class="tab-pane" id="admission" ng-include="'../pages/pcusheet/admission.html'"></div>
+            <div class="tab-pane" id="status" ng-include="'../pages/pcusheet/admission.html'"></div>
+            <div class="tab-pane" id="prescription" ng-include="'../pages/pcusheet/prescription.html'"></div>
+            <div class="tab-pane" id="drugs" ng-include="'../pages/pcusheet/drugs.html'"></div>
+            <div class="tab-pane" id="labtest" ng-include="'../pages/pcusheet/labtest.html'"></div>
+
+        </div>
+        <!-- /.tab-content -->
+    </div>
+</section>
