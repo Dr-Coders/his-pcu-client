@@ -1,5 +1,2 @@
 # dependencies
 /node_modules
-/src/app/dist
-/src/app/bootstrap
-/src/app/plugins
