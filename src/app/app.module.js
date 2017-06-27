@@ -5,7 +5,7 @@ var app = angular.module("Route", ["ngRoute"])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when("/", {
-                templateUrl: "pages/home.html"
+                templateUrl: "components/home/home.html"
             })
             .when("/index.html", {
                 templateUrl: "components/home/home.html"
@@ -15,21 +15,21 @@ var app = angular.module("Route", ["ngRoute"])
                 controller: "admissionController"
             })
             .when("/pcusheet/addprescription", {
-                templateUrl: "pages/pcusheet/addprescription.html",
+                templateUrl: "components/pcusheet/pcusheet/addprescription.html",
                 controller:"pcuController"
             })
             .when("/registration", {
-                templateUrl: "pages/registration.html"
+                templateUrl: "components/registration/registration.html"
             })
             .when("/pcusheet", {
-                templateUrl: "pages/pcusheet/pcusheet.html",
+                templateUrl: "components/pcusheet/pcusheet.html",
                 controller : "pcuController"
             })
             .when("/search", {
-                templateUrl: "pages/searchpatient.html"
+                templateUrl: "components/searchpatient/searchpatient.html"
             })
             .when("/pcusheet/addlabtest", {
-                templateUrl: "pages/pcusheet/addlabtest.html"
+                templateUrl: "components/pcusheet/pcusheet/addlabtest.html"
             })
 
 
