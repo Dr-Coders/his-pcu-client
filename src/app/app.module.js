@@ -8,10 +8,10 @@ var app = angular.module("Route", ["ngRoute"])
                 templateUrl: "pages/home.html"
             })
             .when("/index.html", {
-                templateUrl: "pages/home.html"
+                templateUrl: "components/home/home.html"
             })
             .when("/pcusheet/admission", {
-                templateUrl: "pages/pcusheet/admission.html",
+                templateUrl: "components/pcusheet/pcusheet/admission.html",
                 controller: "admissionController"
             })
             .when("/pcusheet/addprescription", {
