@@ -18,10 +18,10 @@ app.controller("pcuController", function ($scope, $http, $interval) {
     $scope.printDate = function (date) {
         if($scope.previousDate != date){
             $scope.previousDate = date;
-           return date;
+           return true;
         }
         else{
-            return '';
+            return false;
         }
     }
     

@@ -20,7 +20,7 @@
             <ul class="timeline">
                 <!--timeline time label-->
 
-                <li class="time-label"><span class="bg-red">{{ printDate(prescription.date) }}</span></li>
+                <li class="time-label" ng-show="printDate(prescription.date)"><span class="bg-red">{{ prescription.date }}</span></li>
                 <!-- /.timeline-label -->
 
                 <!-- timeline item -->
@@ -38,7 +38,7 @@
 
                         <div class="timeline-footer">
                             <a class="btn btn-primary btn-md "><i class="fa fa-stethoscope">
-                            </i> by {{prescription.doctor }}</a>
+                            </i> by {{prescription.doctor.firstname }} {{prescription.doctor.lastname }}</a>
                         </div>
                     </div>
                 </li>
