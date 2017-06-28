@@ -21,22 +21,22 @@
             </div>
         </form>
     </div>
-    <div class="nav-tabs-custom transparenta">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#personal" data-toggle="tab">Personal Details</a></li>
-            <li><a href="#admission" data-toggle="tab">Admission Details</a></li>
-            <li><a href="#status" data-toggle="tab">Current Status</a></li>
-            <li><a href="#prescription" data-toggle="tab">Prescription Details</a></li>
-            <li><a href="#drugs" data-toggle="tab">Prescribed Drugs</a></li>
-            <li><a href="#labtest" data-toggle="tab">Lab Tests & Lab Results</a></li>
+    <div class="transparenta">
+        <ul >
+            <li class="inline"><button ng-click="changeview(1)" class="btn btn-primary">Personal </button></li>
+            <li class="inline"><button ng-click="changeview(2)" class="btn btn-primary">Admission Details</button></li>
+            <li class="inline"><button ng-click="changeview(3)" class="btn btn-primary">Current Status</button></li>
+            <li class="inline"><button ng-click="changeview(4)" class="btn btn-primary">Prescription Details</button></li>
+            <li class="inline"><button ng-click="changeview(5)" class="btn btn-primary">Prescribed Drugs</button></li>
+            <li class="inline"><button ng-click="changeview(6)" class="btn btn-primary">Lab Tests & Lab Results</button></li>
         </ul>
-        <div class="tab-content transparenta">
-            <div class="tab-pane active" id="personal" ng-include="'../pcusheet/personaldetails/personal.html'"></div>
-            <div class="tab-pane" id="admission" ng-include="'../pcusheet/addmission/admission.html'"></div>
-            <div class="tab-pane" id="status" ng-include="'../pcusheet/status/status.html'"></div>
-            <div class="tab-pane" id="diagnosis" ng-include="'../pcusheet/diagnosis/diagnosis.html'"></div>
-            <div class="tab-pane" id="prescription" ng-include="'../pcusheet/prescription/prescription.html'"></div>
-            <div class="tab-pane" id="labtest" ng-include="'../pcusheet/labtest/labtest.html'"></div>
+        <div class="transparenta">
+            <div ng-show="view == 1" id="personal" ng-include="'components/pcusheet/status/status.html'"></div>
+            <div ng-show="view == 2" id="admission" ng-include="'components/pcusheet/addmission/admission.html'"></div>
+            <div ng-show="view == 3" id="status" ng-include="'components/pcusheet/status/status.html'"></div>
+            <div ng-show="view == 4" id="diagnosis" ng-include="'components/pcusheet/diagnosis/diagnosis.html'"></div>
+            <div ng-show="view == 5" id="prescription" ng-include="'components/pcusheet/prescription/prescription.html'"></div>
+            <div ng-show="view == 6" id="labtest" ng-include="'components/pcusheet/labtest/labtest.html'"></div>
 
         </div>
         <!-- /.tab-content -->

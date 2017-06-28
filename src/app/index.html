@@ -39,6 +39,7 @@
     <script src="login/app.js"></script>
     <script src="login/loginCtrl.js"></script>
     <script src="login/sessionService.js"></script>
+    <script src="app.controller.js"></script>
 
 
     <!--controllers-->
@@ -49,7 +50,7 @@
 
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" ng-controller="appController">
 <div class="wrapper" >
 
     <header class="main-header">
@@ -77,7 +78,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!--<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">-->
-                            <span class="hidden-xs">User 1</span>
+                            <span class="hidden-xs">{{ mess }}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->

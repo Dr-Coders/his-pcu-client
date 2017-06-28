@@ -13,6 +13,7 @@ app.controller("pcuController", function ($scope, $http, $interval) {
 
     //Prscriptions
     $scope.previousDate = "";
+    $scope.view = 1;
     
     $scope.printDate = function (date) {
         if($scope.previousDate != date){
@@ -48,6 +49,10 @@ app.controller("pcuController", function ($scope, $http, $interval) {
             console.log("I got the data I requested : " + response.data);
             $scope.drugdata = response.data;
         });
+
+    $scope.changeview = function (view) {
+        $scope.view = view;
+    }
 
 })
 
