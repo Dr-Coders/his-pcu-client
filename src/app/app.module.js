@@ -11,25 +11,25 @@ var app = angular.module("Route", ["ngRoute"])
                 templateUrl: "components/home/home.html"
             })
             .when("/pcusheet/admission", {
-                templateUrl: "components/pcusheet/pcusheet/admission.html",
+                templateUrl: "./components/pcusheet/pcusheet/admission.html",
                 controller: "admissionController"
             })
             .when("/pcusheet/addprescription", {
-                templateUrl: "components/pcusheet/pcusheet/addprescription.html",
+                templateUrl: "./components/pcusheet/pcusheet/addprescription.html",
                 controller:"pcuController"
             })
             .when("/registration", {
-                templateUrl: "components/registration/registration.html"
+                templateUrl: "./components/registration/registration.html"
             })
             .when("/pcusheet", {
-                templateUrl: "components/pcusheet/pcusheet.html",
+                templateUrl: "./components/pcusheet/pcusheet.html",
                 controller : "pcuController"
             })
             .when("/search", {
-                templateUrl: "components/searchpatient/searchpatient.html"
+                templateUrl: "./components/searchpatient/searchpatient.html"
             })
             .when("/pcusheet/addlabtest", {
-                templateUrl: "components/pcusheet/pcusheet/addlabtest.html"
+                templateUrl: "./components/pcusheet/pcusheet/addlabtest.html"
             })
 
 
