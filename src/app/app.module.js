@@ -11,7 +11,7 @@ var app = angular.module("Route", ["ngRoute"])
                 templateUrl: "components/home/home.html"
             })
             .when("/pcusheet/admission", {
-                templateUrl: "components/pcusheet/addmission/admission.html",
+                templateUrl: "./../app/components/pcusheet/addmission/admission.html",
                 controller: "admissionController"
             })
             .when("/pcusheet/addprescription", {

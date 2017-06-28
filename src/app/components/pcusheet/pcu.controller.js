@@ -42,8 +42,8 @@ app.controller("pcuController", function ($scope, $http, $interval) {
         });
     };
 
-    //get drugs from db
-    $http.get('http://localhost:8080/api/drugs')
+    //get prescription from db
+    $http.get('http://localhost:8080/api/prescription')
         .then(function (response) {
             console.log("I got the data I requested : " + response.data);
             $scope.drugdata = response.data;

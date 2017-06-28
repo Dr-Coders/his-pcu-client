@@ -31,10 +31,15 @@
 
     <!--<base href="/">-->
     <!--angular scripts-->
+
     <script src="../../node_modules/angular/angular.js"></script>
     <script src="../../node_modules/angular-route/angular-route.js"></script>
-
+    <script src="../../node_modules/cookie/angular-cookies.min.js"></script>
     <script src="app.module.js"></script>
+    <script src="login/app.js"></script>
+    <script src="login/loginCtrl.js"></script>
+    <script src="login/sessionService.js"></script>
+
 
     <!--controllers-->
     <script src="components/pcusheet/pcu.controller.js"></script>
@@ -45,7 +50,7 @@
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
+<div class="wrapper" >
 
     <header class="main-header">
 
@@ -91,7 +96,7 @@
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a ng-click="logoutUser()" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -149,7 +154,7 @@
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper about-back">
+    <div  class="content-wrapper about-back">
         <!-- Content Header (Page header) -->
 
         <!--code here-->
