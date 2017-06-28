@@ -1,0 +1,44 @@
+<section class="content-header">
+    <h1 class="pageHeader">
+        Add Prescription Detail
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"> PCU Sheet</a></li>
+        <li><a href="#"> Prescriprion Details</a></li>
+        <li class="active"> Add Prescription Detail</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="box box-primary">
+        <form role="form">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="doctorname">Name of the Doctor</label>
+                    <input type="text" class="form-control" id="doctorname" placeholder="Enter name" ng-model="formData.doctor">
+                </div>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" placeholder="Enter title" ng-model="formData.title">
+                </div>
+                <div class="form-group">
+                    <label for="details">Details</label>
+                    <input type="text" class="form-control" id="details" placeholder="Enter details" ng-model="formData.content">
+                </div>
+                <div class="form-group">
+                    <label for="checkupTime">Checkup time</label>
+                    <input type="text" class="form-control" id="checkupTime" placeholder="Enter Checkup Time" ng-model="formData.time">
+                </div><div class="form-group">
+                    <label for="checkupDate">Checkup Date</label>
+                    <input type="text" class="form-control" id="checkupDate" placeholder="Enter Checkup Date" ng-model="formData.date">
+                </div>
+            </div>
+
+            <div class="box-footer">
+                <a href="/pcusheet#prescription" ><button type="submit" class="btn btn-danger">Cancel</button></a>
+                <button type="submit" class="btn btn-success pull-right" ng-click="addPrescription()">Add Entry</button>
+            </div>
+        </form>
+    </div>
+</section>

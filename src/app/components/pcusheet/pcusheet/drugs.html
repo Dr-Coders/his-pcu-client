@@ -1,0 +1,55 @@
+<section class="content-header">
+    <h1 class="pageHeader">
+        Prescribed Drugs
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"> PCU Sheet</a></li>
+        <li class="active">Prescription Drugs</li>
+    </ol>
+</section>
+
+<section class="content">
+    <ul class="timeline">
+
+        <li ng-repeat="dat in drugdata | orderBy:'-date'">
+            <ul class="timeline" >
+                <!--timeline time label-->
+                <li class="time-label">
+                    <span class="bg-red">
+                        {{ dat.date}}
+                    </span>
+                </li>
+                <!-- /.timeline-label -->
+
+                <!-- timeline item -->
+                <li ng-repeat="prescription in dat.prescriptions | orderBy:'-time'">
+                    <!-- timeline icon -->
+                    <i class="fa  fa-medkit bg-blue"></i>
+                    <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> {{prescription.time}}</span>
+
+                        <h3 class="timeline-header"><a href="#">{{prescription.doctor}}</a></h3>
+
+                        <div class="timeline-body">
+                            <ul>
+                                <li  ng-repeat="drug in prescription.drugs">{{ drug }}</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-footer">
+                            <a class="btn btn-primary btn-md"><i class="fa fa-stethoscope"></i> by {{ prescription.doctor }}</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+        <!-- END timeline item -->
+        <li class="time-label">
+            <span class="bg-green">
+                &nbsp;Registered&nbsp;
+            </span>
+        </li>
+    </ul>
+</section>
