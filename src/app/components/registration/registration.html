@@ -10,7 +10,7 @@
 
 <section class="content">
     <!--patientId display-->
-    <div class="box box-default">
+    <div class="box box-primary">
         <div class="box-body">
             <div class="row">
                 <div class="col-md-7">
@@ -25,7 +25,7 @@
         </div>
     </div>
     <!--administrative form-->
-    <div class="box box-default">
+    <div class="box box-primary">
         <div class="box-header with-border">
             <h3 class="box-title">Administrative Details</h3>
         </div>
@@ -36,7 +36,7 @@
                     <div>
                         <label class="col-sm-4 control-label">First Name :</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_fname">
+                            <input type="text" class="form-control" id="fname" ng-model="patientDetails.firstname">
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                     <div>
                         <label class="col-sm-4 control-label">Surname :</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_sname">
+                            <input type="text" class="form-control" id="sname" ng-model="patientDetails.sirname">
                         </div>
                     </div>
                 </div>
@@ -52,22 +52,10 @@
                     <div>
                         <label class="col-sm-4 control-label">NIC :</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_nic">
+                            <input type="text" class="form-control" id="nic" ng-model="patientDetails.nic">
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">extra :</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_extra">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!--date of birth row-->
-            <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Date of Birth :</label>
@@ -76,13 +64,14 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-calendar"></i>
                                 </div>
-                                <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'">
+                                <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" id="dateofbirth" ng-model="patientDetails.dateofbirth">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--gender and maritail row-->
+
+           <!--gender and maritail row-->
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
@@ -95,13 +84,13 @@
                             </select>
                         </div>
                         <div>
-                            <span class="select2-selection__rendered" id="txt_gender"></span>
+                            <span class="select2-selection__rendered" id="gender" ng-model="patientDetails.gender"></span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Maritail:</label>
+                        <label class="col-sm-4 control-label">Marital Status:</label>
                         <div class="col-sm-12">
                             <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
                                     tabindex="-1" aria-hidden="true">
@@ -110,7 +99,7 @@
                             </select>
                         </div>
                         <div>
-                            <span class="select2-selection__rendered" id="txt_maritail"></span>
+                            <span class="select2-selection__rendered" id="marital" ng-model="patientDetails.maritalstatus"></span>
                         </div>
                     </div>
                 </div>
@@ -123,7 +112,7 @@
 
     <!--Contact information details-->
 
-    <div class="box box-default">
+    <div class="box box-primary">
         <div class="box-header with-border">
             <h3 class="box-title">Contact Details</h3>
         </div>
@@ -133,7 +122,21 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Address :</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_address">
+                            <input type="text" class="form-control" id="address" ng-model="patientDetails.address">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Contact(res) :</label>
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-phone"></i>
+                                </div>
+                                <input type="text" class="form-control"
+                                       data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" id="contact_res" ng-model="patientDetails.contact_res">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -142,28 +145,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Phone(res) :</label>
+                        <label class="col-sm-4 control-label">Contact(mobile) :</label>
                         <div class="col-sm-12">
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <input type="text" class="form-control"
-                                       data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Phone(mobile) :</label>
-                        <div class="col-sm-12">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <input type="text" class="form-control"
-                                       data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="">
+                                       data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" id="contact_mobile" ng-model="patientDetails.contact_mobile">
                             </div>
                         </div>
                     </div>
@@ -174,7 +163,7 @@
                         <div class="col-sm-12">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-                                <input type="email" class="form-control" placeholder="Email">
+                                <input type="email" class="form-control" placeholder="Email" id="email" ng-model="patientDetails.email">
                             </div>
                         </div>
                     </div>
@@ -186,33 +175,26 @@
     </div>
 
 
-    <!--guarantor information-->
-    <div class="box box-default">
+    <!--guardian information-->
+    <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title">Guarantors Details</h3>
+            <h3 class="box-title">Guardian Details</h3>
         </div>
         <div class="box-body">
             <div class="row">
                 <div class="col-md-6">
-                    <div>
-                        <label>First Guarantor </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Guarantor Name:</label>
+                        <label class="col-sm-4 control-label">Guardian Name:</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_guarantorname1">
+                            <input type="text" class="form-control" id="guardian_name" ng-model="patientDetails.guardian_name">
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Relation TO :</label>
+                        <label class="col-sm-4 control-label">Relationship :</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_relationto1">
+                            <input type="text" class="form-control" id="relationship" ng-model="patientDetails.guardian_relationship">
                         </div>
                     </div>
                 </div>
@@ -220,94 +202,41 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Phone(res) :</label>
+                        <label class="col-sm-4 control-label">Contact(res) :</label>
                         <div class="col-sm-12">
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <input type="text" class="form-control"
-                                       data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="">
+                                       data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" id="guardian_contact_res" ng-model="patientDetails.guardian_contact_res">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">Phone(mobile) :</label>
+                        <label class="col-sm-4 control-label">Contact(mobile) :</label>
                         <div class="col-sm-12">
                             <div class="input-group">
                                 <div class="input-group-addon">
                                     <i class="fa fa-phone"></i>
                                 </div>
                                 <input type="text" class="form-control"
-                                       data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="">
+                                       data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" id="guardian_contact_mobile" ng-model="patientDetails.guardian_contact_mobile">
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div>
-                        <label>Second Guarantor </label>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Guarantor Name:</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_guarantorname">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Relation TO :</label>
-                        <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_relationto">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Phone(res) :</label>
-                        <div class="col-sm-12">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <input type="text" class="form-control"
-                                       data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">Phone(mobile) :</label>
-                        <div class="col-sm-12">
-                            <div class="input-group">
-                                <div class="input-group-addon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <input type="text" class="form-control"
-                                       data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
-        <!--div guarantor information-->
+        <!--div Guardian information-->
     </div>
 
 <!--Medical details-->
-    <div class="box box-default">
+
+    <div class="box box-primary">
         <div class="box-header with-border">
             <h3 class="box-title">Medical Details</h3>
         </div>
@@ -317,7 +246,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Height :</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_height">
+                            <input type="text" class="form-control" id="height" ng-model="patientDetails.height">
                         </div>
                     </div>
                 </div>
@@ -325,7 +254,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Weight :</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_weight">
+                            <input type="text" class="form-control" id="weight" ng-model="patientDetails.weight">
                         </div>
                     </div>
                 </div>
@@ -335,7 +264,7 @@
                     <div class="form-group">
                         <label class="col-sm-4 control-label">Blood Group :</label>
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="txt_bloodgroup">
+                            <input type="text" class="form-control" id="bloodgroup" ng-model="patientDetails.bloodgroup">
                         </div>
                     </div>
                 </div>
@@ -348,7 +277,7 @@
 
             <div class="box-footer">
         <button type="submit" class="btn btn-danger">Cancel</button>
-        <button type="submit" class="btn btn-success pull-right">Register</button>
+        <button type="submit" class="btn btn-success pull-right" ng-click="submit(patientDetails)">Register</button>
     </div>
 
 </section>

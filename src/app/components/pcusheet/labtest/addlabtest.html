@@ -1,3 +1,4 @@
+<div ng-controller="labtestController">
 <section class="content-header">
     <h1 class="pageHeader">
         <a href="/afproject/pcusheet" target="_self">PCU Sheet</a>
@@ -11,15 +12,16 @@
 </section>
 
 <section class="content">
-    <div class="nav-tabs-custom transparenta">
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#add_new" data-toggle="tab">Add New Lab Test</a></li>
-            <li><a href="#add_result" data-toggle="tab">Add Lab Result</a></li>
+    <div class="transparenta">
+        <ul>
+            <li class="inline"><button ng-click="changeview(1)" class="btn btn-primary">Add New Lab Test</button></li>
+            <li class="inline"><button ng-click="changeview(2)" class="btn btn-primary">Add Lab Result</button></li>
         </ul>
-        <div class="tab-content transparenta">
-            <div class="tab-pane active" id="add_new" ng-include="'../pages/pcusheet/labtestAddnew.html'"></div>
-            <div class="tab-pane" id="add_result" ng-include="'../pages/pcusheet/labtestAddresult.html'"></div>
+        <div class="transparenta">
+            <div ng-show="view == 1" id="add_new" ng-include="'./../components/pcusheet/labtest/labtestAddnew.html'"></div>
+            <div ng-show="view == 2" id="add_result" ng-include="'./../components/pcusheet/labtest/labtestAddresult.html'"></div>
         </div>
         <!-- /.tab-content -->
     </div>
 </section>
+</div>

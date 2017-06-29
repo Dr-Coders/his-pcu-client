@@ -2,7 +2,7 @@
 //  * Created by HPkavin on 5/4/2017.
 //  */
 // 'use strict';
-myapp.factory('sessionService',
+app.factory('sessionService',
 
     function($cookies) {
         return {

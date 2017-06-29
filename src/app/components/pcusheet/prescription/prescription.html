@@ -1,0 +1,55 @@
+<div ng-controller="PrescriptionController">
+    <section class="content-header">
+    <h1 class="pageHeader">
+        Prescribed Drugs
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"> PCU Sheet</a></li>
+        <li class="active">Prescription Drugs</li>
+    </ol>
+</section>
+
+<section class="content">
+    <ul class="timeline">
+
+        <li ng-repeat="prescription in prescriptiondata | orderBy:'-date'">
+            <ul class="timeline">
+                <!--timeline time label-->
+
+                <li class="time-label" ng-show="showDate(prescription.date)"><span class="bg-red">{{ formatDate(prescription.date) }}</span></li>
+                <!-- /.timeline-label -->
+
+                <!-- timeline item -->
+                <li>
+                    <!-- timeline icon -->
+                    <i class="fa fa-list-alt bg-blue"></i>
+                    <div class="timeline-item">
+                        <span class="time"><i class="fa fa-clock-o"></i> {{prescription.time}}</span>
+
+                        <h3 class="timeline-header"><a href="#">{{prescription.title}}</a></h3>
+
+                        <div class="timeline-body">
+                            <ul>
+                                <li  ng-repeat="drug in prescription.drugs">{{ drug }}</li>
+                            </ul>
+                        </div>
+
+                        <div class="timeline-footer">
+                            <a class="btn btn-primary btn-md "><i class="fa fa-stethoscope">
+                            </i> by {{prescription.doctor.firstname }} {{prescription.doctor.lastname }}</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+
+        <!-- END timeline item -->
+        <li class="time-label">
+            <span class="bg-green">
+                &nbsp;Registered&nbsp;
+            </span>
+        </li>
+    </ul>
+</section>
+</div>

@@ -23,6 +23,7 @@
     </div>
     <div class="transparenta">
         <ul >
+            <li class="inline"><button ng-click="changeview(7)" class="btn btn-primary">Patient Details </button></li>
             <li class="inline"><button ng-click="changeview(1)" class="btn btn-primary">Personal </button></li>
             <li class="inline"><button ng-click="changeview(2)" class="btn btn-primary">Admission Details</button></li>
             <li class="inline"><button ng-click="changeview(3)" class="btn btn-primary">Current Status</button></li>
@@ -37,6 +38,7 @@
             <div ng-show="view == 4" id="diagnosis" ng-include="'components/pcusheet/diagnosis/diagnosis.html'"></div>
             <div ng-show="view == 5" id="prescription" ng-include="'components/pcusheet/prescription/prescription.html'"></div>
             <div ng-show="view == 6" id="labtest" ng-include="'components/pcusheet/labtest/labtest.html'"></div>
+            <div ng-show="view == 7" id="patient" ng-include="'components/pcusheet/Patient/Patient.html'"></div>
 
         </div>
         <!-- /.tab-content -->

@@ -1,71 +1,107 @@
 'use strict';
 
-var myapp = angular.module('Login', ['ngCookies'])
-    .run(function($rootScope, $location, sessionService,$window){
+app.run(function($rootScope, $location, sessionService,$window){
 
-
-
+    console.log("check");
     var place =$location.absUrl();
     console.log(place);
     var connected = sessionService.getid('uid');
     console.log(connected);
-    if (connected == null) {
+    console.log($rootScope.state);
+    if (connected == undefined) {
 
-        if(place != "http://localhost:8000/login.html") {
-            $window.location.href = "./../login.html";
+
+        if($rootScope.state == "home" || $rootScope.state == undefined) {
+            $rootScope.state = "login";
+            $location.path("/login");
 
         }
 
 
     }else{
-            console.log(connected);
-            if(place != "http://localhost:8000") {
-                $window.location.href = "./../index.html";
+        console.log(connected);
 
-            }
+        if($rootScope.state == "login") {
+            $rootScope.state = "home";
+            $location.path("/");
+        }
+
 
     }
 
-})
-.controller('loginCtrl',function ($scope,sessionService,$window) {
+});
+app.controller('loginCtrl',function ($scope,sessionService,$window,$location,$rootScope) {
+
     $scope.msgtxt='';
     $scope.Username = '';
     $scope.Password = '';
     $scope.Check = '';
+    $rootScope.Loged = false;
+    $rootScope.Super = false;
+    console.log("controller called");
+
     $scope.login=function(){
         console.log($scope.Username+" login called");
-        if($scope.Username == "admin" && $scope.Password == "pass"){
+        if(($scope.Username == "admin"|| $scope.Username == "super") && $scope.Password == "pass"){
             $scope.Check='Correct information';
             // Setting a cookie
             sessionService.setid('uid',$scope.Username);
-            window.location.href = "../index.html";
+            $rootScope.Loged = true;
+            $rootScope.Super = true;
 
+            // if($scope.Username == "admin") {
+            //     console.log("super trueeed");
+            //
+            // }
+            // else
+            //          $rootScope.Super = false;
+
+            console.log($rootScope.Super+ $scope.Check );
+            $location.path("/");
         }
         else {
             $scope.Check ='Invalid Username or password';
+
         }
 
     };
+    $scope.ClickMeToRedirect = function () {
+
+        $location.path("/");
+    };
+
     $scope.CheckUser=function(){
         console.log("CheckUser called");
         if(sessionService.getid('uid')) {
             $scope.ClickMeToRedirect();
-        }
-        console.log(sessionService.getid('uid'));
+            $rootScope.Loged = true;
 
+        }else {
+            $rootScope.Loged = false;
+            console.log(sessionService.getid('uid'));
+            $location.path("/login");
+        }
     };
+
+    $scope.CheckUser();
     $scope.logoutUser=function(){
         console.log("logout called");
         console.log(sessionService.destroy('uid'));
         $scope.CheckUser();
-    };
-    $scope.ClickMeToRedirect = function () {
+        $location.path("/login");
+        $rootScope.Loged = false;
 
-        $window.location.href = "index.html";
     };
+
 
 
 });
+
+
+
+
+
+
 
 
 

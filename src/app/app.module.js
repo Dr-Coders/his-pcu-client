@@ -1,14 +1,19 @@
 /**
  * Created by Nirmal on 4/29/2017.
  */
-var app = angular.module("Route", ["ngRoute"])
+var app = angular.module("Route", ["ngRoute","ngCookies"])
     .config(function ($routeProvider, $locationProvider) {
         $routeProvider
             .when("/", {
-                templateUrl: "components/home/home.html"
+                templateUrl: "./components/home/home.html",
+                controller: 'loginCtrl'
+            })
+            .when("/login", {
+                templateUrl: "./login/login.html",
+                controller: 'loginCtrl'
             })
             .when("/index.html", {
-                templateUrl: "components/home/home.html"
+                templateUrl: "./components/home/home.html"
             })
             .when("/pcusheet/admission", {
                 templateUrl: "./../app/components/pcusheet/addmission/admission.html",
@@ -29,7 +34,7 @@ var app = angular.module("Route", ["ngRoute"])
                 templateUrl: "./components/searchpatient/searchpatient.html"
             })
             .when("/pcusheet/addlabtest", {
-                templateUrl: "components/pcusheet/labtest/addlabtest.html"
+                templateUrl: "./../components/pcusheet/labtest/addlabtest.html"
             })
 
 

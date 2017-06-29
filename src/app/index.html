@@ -21,7 +21,6 @@
     <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
 
 
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,24 +33,34 @@
 
     <script src="../../node_modules/angular/angular.js"></script>
     <script src="../../node_modules/angular-route/angular-route.js"></script>
-    <script src="../../node_modules/cookie/angular-cookies.min.js"></script>
+    <script src="../../node_modules/angular-cookies/angular-cookies.min.js"></script>
     <script src="app.module.js"></script>
     <script src="login/app.js"></script>
     <script src="login/loginCtrl.js"></script>
     <script src="login/sessionService.js"></script>
     <script src="app.controller.js"></script>
+    <script src="services/registration.service.js"></script>
 
+
+    <script src="services/diagnosis.service.js"></script>
+    <script src="services/patient.service.js"></script>
+    <script src="services/prescription.service.js"></script>
 
     <!--controllers-->
     <script src="components/pcusheet/pcu.controller.js"></script>
+    <script src="components/registration/registration.controller.js"></script>
 
     <!--harsha css-->
     <link rel="stylesheet" href="dist/css/harsha.css">
+    <script src="components/pcusheet/diagnosis/diagnosis.controller.js"></script>
+    <script src="components/pcusheet/prescription/prescriprion.controller.js"></script>
+    <script src="components/pcusheet/labtest/labtest.controller.js"></script>
+    <script src="services/labtest.services.js"></script>
 
 
 </head>
-<body class="hold-transition skin-blue sidebar-mini" ng-controller="appController">
-<div class="wrapper" >
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
 
     <header class="main-header">
 
@@ -70,38 +79,61 @@
                 <span class="sr-only">Toggle navigation</span>
             </a>
             <!-- Navbar Right Menu -->
-            <div class="navbar-custom-menu">
+            <div class="navbar-custom-menu" ng-controller="loginCtrl">
                 <ul class="nav navbar-nav">
                     <!-- Messages: style can be found in dropdown.less-->
 
-                    <!-- User Account: style can be found in dropdown.less -->
-                    <li class="dropdown user user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <!--<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">-->
-                            <span class="hidden-xs">{{ mess }}</span>
+                    <li class="dropdown user user-menu" ng-if="Loged">
+
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <span class="hidden-xs">{{ Username  }}Users</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
                             <li class="user-header">
-                                <!--<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">-->
+                                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                   Nurse
-                                    <!--<small>Member since Nov. 2012</small>-->
+                                    {{Username }} - Web Developer
+                                    <small>Member since Nov. 2012</small>
                                 </p>
                             </li>
 
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                </div>
+                                <!--<div class="pull-left">-->
+                                <!--<a href="#" class="btn btn-default btn-flat">Profile</a>-->
+                                <!--</div>-->
                                 <div class="pull-right">
-                                    <a ng-click="logoutUser()" class="btn btn-default btn-flat">Sign out</a>
+                                    <a ng-click="logoutUser()" class="btn btn-default btn-flat">Logout</a>
                                 </div>
                             </li>
                         </ul>
                     </li>
+                    <ul class="nav navbar-nav">
+                        <!-- Messages: style can be found in dropdown.less-->
+
+                        <li class="dropdown user user-menu" ng-if="!Loged">
+
+                            <a class="hidden-xs" href="/login">Login</a>
+                            <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >-->
+                            <!--&lt;!&ndash;<img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">&ndash;&gt;-->
+                            <!--<span  >-->
+
+                            <!--</span>-->
+                            <!--</a>-->
+                        </li>
+                    </ul>
+                    <!--</div>-->
+                    <!--<div ng-if="!Loged" >-->
+                    <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" >-->
+                    <!--<a href="/login"  class="btn btn-default btn-flat">Login</a>-->
+                    <!--&lt;!&ndash;<span class="hidden-xs">{{ Username  }}Users</span>&ndash;&gt;-->
+                    <!--</a>-->
+                    <!--</div>-->
+                    <!--</li>-->
                     <!-- Control Sidebar Toggle Button -->
 
                 </ul>
@@ -110,52 +142,50 @@
         </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
+    <aside  ng-show="Loged" class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
             <!-- Sidebar user panel -->
             <!--<div class="user-panel">-->
-                <!--<div class="pull-left image">-->
-                    <!--&lt;!&ndash;<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">&ndash;&gt;-->
-                <!--</div>-->
-                <!--<div class="pull-left info">-->
-                    <!--<p>User 1</p>-->
-                    <!--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
-                <!--</div>-->
+            <!--<div class="pull-left image">-->
+            <!--&lt;!&ndash;<img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">&ndash;&gt;-->
+            <!--</div>-->
+            <!--<div class="pull-left info">-->
+            <!--<p>User 1</p>-->
+            <!--<a href="#"><i class="fa fa-circle text-success"></i> Online</a>-->
+            <!--</div>-->
             <!--</div>-->
 
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu">
                 <li class="header">NAVIGATION PANEL</li>
-                <li class="active treeview">
-                    <a href="/test">
-                        <i class="fa fa-dashboard"></i> <span>Dashbard</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard </a></li>
-                    </ul>
-                </li>
-                <li><a href="/registration">
+                <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard </a></li>
+                <li ng-if="Loged"><a href="/registration">
                     <i class="fa fa-user-plus"></i>
                     <span>Registration</span>
-            </span>
-                </a>
-                </li><li><a href="/pcusheet">
-                <i class="fa fa-list-alt"></i>
-                <span>PCU Sheet</span>
-            </span>
+                    </span>
                 </a>
                 </li>
+                <li ng-if="Loged" ><a href="/pcusheet">
+                    <i class="fa fa-list-alt"></i>
+                    <span>PCU Sheet</span>
+                    </span>
+                </a>
+                </li>
+                <li ng-if="Super" ><a href="/users">
+                    <i class="fa fa-list-alt"></i>
+                    <span>Users</span>
+                    </span>
+                </a>
+                </li>
+
             </ul>
         </section>
         <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
-    <div  class="content-wrapper about-back">
+    <div class="content-wrapper about-back">
         <!-- Content Header (Page header) -->
 
         <!--code here-->
