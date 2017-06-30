@@ -25,7 +25,7 @@
         </form>
     </div>
     <div class="box box-primary text-center" ng-show="selected_patient">
-        <label class="inline"><h4> PCU Sheet Of Patient : {{ selected_patient_data.firstname }} {{selected_patient_data.sirname}}</h4></label>
+        <label class="inline"><h4> <b>PCU Sheet Of Patient : </b> {{ selected_patient_data.firstname }} {{selected_patient_data.sirname}}</h4></label>
         <button ng-click="selected_patient = null" class="pull-right btn btn-danger inline"><i class="glyphicon glyphicon-remove"></i></button>
     </div>
     <div class="transparenta" ng-show="selected_patient">

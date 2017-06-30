@@ -58,4 +58,9 @@ app.controller('DiagnosisController',['$scope','$rootScope','DiagnosisService','
     };
     $scope.loadDoctors();
 
+    $scope.showDoctor = function (doctor_id) {
+        $scope.selecteddoctordata = $filter('filter')($scope.doctordata, {_id: doctor_id })[0];
+        console.log("Selected doctor : " + doctor_id + " data : " + $scope.selecteddoctordata.firstname);
+    }
+
 }]);
