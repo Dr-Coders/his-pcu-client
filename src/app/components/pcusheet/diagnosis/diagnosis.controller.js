@@ -43,8 +43,10 @@ app.controller('DiagnosisController',['$scope','$rootScope','DiagnosisService','
     };
 
     $scope.showDate = function (date) {
-        if(date != $scope.previourDate)
+        if(date != $scope.previourDate){
+            $scope.previourDate = date;
             return true;
+        }
         else
             return false;
     };
