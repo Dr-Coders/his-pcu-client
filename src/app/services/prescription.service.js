@@ -6,8 +6,11 @@ app.factory("PrescriptionService",['$http',function ($http) {
     var baseURL = "http://localhost:8080/api/prescription/";
 
     return {
-        getPrescription : function () {
+        getPrescriptions : function () {
             return $http.get(baseURL);
+        },
+        getPrescription : function (prescription_id) {
+            return $http.get(baseURL + prescription_id);
         },
         addPrescription : function (prescription) {
             return $http.post(baseURL,prescription);

@@ -6,7 +6,7 @@ app.factory("LabtestService",['$http',function ($http) {
     var baseURL = "http://localhost:8080/api/labtest/";
 
     return {
-        getLabtest : function () {
+        getLabtests : function () {
             return $http.get(baseURL);
         },
         addLabtest : function (labtest) {

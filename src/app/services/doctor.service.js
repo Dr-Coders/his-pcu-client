@@ -6,7 +6,7 @@ app.factory("DoctorService",['$http',function ($http) {
     var baseURL = "http://localhost:8080/api/doctor/";
 
     return {
-        getDoctor : function () {
+        getDoctors : function () {
             return $http.get(baseURL);
         },
         addDoctor : function (doctor) {
