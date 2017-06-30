@@ -2,13 +2,15 @@
  * Created by Nirmal on 6/28/2017.
  */
 
-app.controller('DiagnosisController',['$scope','DiagnosisService','$filter',function ($scope,DiagnosisService,$filter) {
+app.controller('DiagnosisController',['$scope','$rootScope','DiagnosisService','DoctorService','$filter',function ($scope,$rootScope,DiagnosisService,DoctorService,$filter) {
     $scope.loadDiagnosis = function() {
-        DiagnosisService.getDiagnosis()
-            .then(function (response) {
-                console.log("I got the data I requested : " + response.data);
-                $scope.diagnosisdata = response.data;
-            });
+        if($rootScope.selected_patient) {
+            DiagnosisService.getDiagnosis($rootScope.selected_patient)
+                .then(function (response) {
+                    console.log("I got the data I requested : " + response.data);
+                    $scope.diagnosisdata = response.data;
+                });
+        }
     };
     $scope.loadDiagnosis();
     $scope.previourDate = "";
@@ -17,10 +19,12 @@ app.controller('DiagnosisController',['$scope','DiagnosisService','$filter',func
     //add diagnosis to the db
     $scope.formData = {};
     $scope.addDiagnosis = function () {
+        $scope.formData.patient = $rootScope.selected_patient;
         console.log($scope.formData);
         DiagnosisService.addDiagnosis($scope.formData)
             .then(function(response) {
-                console.log(response);
+                console.log("Add diagnosis response : " + response);
+                $scope.loadDiagnosis();
             });
     };
 
@@ -44,5 +48,13 @@ app.controller('DiagnosisController',['$scope','DiagnosisService','$filter',func
             return false;
     };
 
+    $scope.loadDoctors = function() {
+        DoctorService.getDoctors()
+            .then(function (response) {
+                console.log("I got the data I requested : " + response.data);
+                $scope.doctordata = response.data;
+            });
+    };
+    $scope.loadDoctors();
 
 }]);
