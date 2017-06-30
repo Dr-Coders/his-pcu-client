@@ -4,7 +4,7 @@
 
 app.controller('PrescriptionController',['$scope','PrescriptionService','$filter',function ($scope,PrescriptionService,$filter) {
     $scope.loadPrescription = function () {
-        PrescriptionService.getPrescription()
+        PrescriptionService.getPrescriptions()
             .then(function (response) {
                 console.log("I got the data I requested : " + response.data);
                 $scope.prescriptiondata = response.data;
