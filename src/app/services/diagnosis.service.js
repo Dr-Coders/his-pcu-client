@@ -6,8 +6,8 @@ app.factory("DiagnosisService",['$http',function ($http) {
     var baseURL = "http://localhost:8080/api/diagnosis/";
 
     return {
-        getDiagnosis : function () {
-            return $http.get(baseURL);
+        getDiagnosis : function (patient_id) {
+            return $http.get(baseURL+patient_id);
         },
         addDiagnosis : function (diagnosis) {
             return $http.post(baseURL,diagnosis);

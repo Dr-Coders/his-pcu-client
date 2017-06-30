@@ -73,9 +73,13 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <label for="doctorname">Name of the Doctor</label>
-                        <input type="text" class="form-control" id="doctorname" placeholder="Enter name"
-                               ng-model="formData.doctor">
+                        <label for="doctor">Name of the Doctor</label>
+                        <!--<input type="text" class="form-control" id="doctorname" placeholder="Enter name"-->
+                               <!--ng-model="formData.doctor">-->
+                        <select id="doctor" class="form-control" ng-model="formData.doctor">
+                            <option value="" selected>Select a doctor</option>
+                            <option ng-repeat="doctor in doctordata" value="{{doctor._id}}" >{{ doctor.firstname }} {{ doctor.lastname }} -- Speciality : {{ doctor.speciality}}</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="title">Title</label>

@@ -1,7 +1,7 @@
 /**
  * Created by Nirmal on 5/1/2017.
  */
-app.controller("pcuController", function ($scope, $http, $interval,PatientService) {
+app.controller("pcuController", function ($scope,$rootScope, $http, $interval,PatientService,DiagnosisService) {
 
     // $scope.TimedRefresh = function(t) {
     //     console.log(t);
@@ -31,16 +31,28 @@ app.controller("pcuController", function ($scope, $http, $interval,PatientServic
     $scope.loadPatient();
 
     $scope.gotopatient = function () {
-        $scope.patient_searching = false
+        $scope.patient_searching = false;
+        $rootScope.selected_patient = $scope.selected_patient;
         console.log("patient selected : " + $scope.selected_patient);
         PatientService.getPatient($scope.selected_patient)
             .then(function (response) {
                 console.log("name : " + response.data.firstname);
                 $scope.selected_patient_data = response.data;
+                $scope.loadDiagnosis();
             })
     }
     //
     // $scope.searching = function () {
     //     $scope.patient_searching = true;
     // }
+    $scope.loadDiagnosis = function() {
+        if($rootScope.selected_patient) {
+            DiagnosisService.getDiagnosis($rootScope.selected_patient)
+                .then(function (response) {
+                    console.log("I got the data I requested : " + response.data);
+                    $scope.diagnosisdata = response.data;
+                });
+        }
+    };
+    $scope.loadDiagnosis();
 })
