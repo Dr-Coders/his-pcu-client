@@ -11,6 +11,7 @@ app.controller('DiagnosisController',['$scope','DiagnosisService','$filter',func
             });
     };
     $scope.loadDiagnosis();
+    $scope.previourDate = "";
 
 
     //add diagnosis to the db
@@ -35,4 +36,13 @@ app.controller('DiagnosisController',['$scope','DiagnosisService','$filter',func
     $scope.formatDate = function(date){
         return $filter('date')(new Date(date) , "dd MMM, yyyy ");
     };
+
+    $scope.showDate = function (date) {
+        if(date != $scope.previourDate)
+            return true;
+        else
+            return false;
+    };
+
+
 }]);

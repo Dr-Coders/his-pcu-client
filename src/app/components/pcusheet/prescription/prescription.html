@@ -11,9 +11,19 @@
 </section>
 
 <section class="content">
+    <div class="box box-success">
+        <div class="box-body">
+            <button class="btn btn-block btn-success btn-md" data-toggle="modal" data-target="#addModal">Add New Diagnosis Detail</button>
+        </div>
+    </div>
+    <div class="box box-primary">
+        <div class="box-body">
+            <input type="text" ng-model="searchkey" placeholder="Search" class="form-control"/>
+        </div>
+    </div>
     <ul class="timeline">
 
-        <li ng-repeat="prescription in prescriptiondata | orderBy:'-date'">
+        <li ng-repeat="prescription in prescriptiondata | orderBy:'-date' | filter:searchkey">
             <ul class="timeline">
                 <!--timeline time label-->
 

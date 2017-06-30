@@ -6,7 +6,7 @@ app.factory("PatientService",['$http',function ($http) {
     var baseURL = "http://localhost:8080/api/patient/";
 
     return {
-        getPatient : function () {
+        getPatients : function () {
             return $http.get(baseURL);
         },
         addPatient : function (patient) {
@@ -17,6 +17,9 @@ app.factory("PatientService",['$http',function ($http) {
         },
         deletePatient : function (patient_id) {
             return $http.delete(baseURL + patient_id);
+        },
+        getPatient : function (patient_id) {
+            return $http.get(baseURL+patient_id);
         }
     };
 }]);

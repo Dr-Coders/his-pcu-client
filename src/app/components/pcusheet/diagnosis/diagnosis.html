@@ -16,8 +16,13 @@
             <button class="btn btn-block btn-success btn-md" data-toggle="modal" data-target="#addModal">Add New Diagnosis Detail</button>
         </div>
     </div>
+    <div class="box box-primary">
+        <div class="box-body">
+            <input type="text" ng-model="searchkey" placeholder="Search" class="form-control"/>
+        </div>
+    </div>
     <ul class="timeline">
-        <li ng-repeat="diagnosis in diagnosisdata | orderBy:'-date'">
+        <li ng-repeat="diagnosis in diagnosisdata | orderBy:'-date' | filter:searchkey">
             <ul class="timeline">
                 <!--timeline time label-->
 
@@ -57,7 +62,7 @@
 </section>
 
 <div id="addModal" class="modal fade" role="dialog">
-    <div class="modal-dialog modal-primary">
+    <div class="modal-dialog ">
 
         <!-- Modal content-->
         <div class="modal-content">
@@ -95,7 +100,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button ng-click="addPrescription()" class="btn btn-success pull-right" data-dismiss="modal">Add Diagnosis</button>
+                <button ng-click="addDiagnosis()" class="btn btn-success pull-right" data-dismiss="modal">Add Diagnosis</button>
                 <button data-dismiss="modal" class="btn btn-warning pull-left">Close</button>
             </div>
         </div>

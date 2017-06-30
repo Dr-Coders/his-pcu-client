@@ -12,23 +12,29 @@
     <div class="box box-primary">
         <form class="search-form">
             <div class="input-group">
-                <input type="text" name="search" class="form-control" placeholder="Enter Patient ID">
-
+                <input type="text" name="search" class="form-control" ng-model="patientsearch" placeholder="Enter Patient ID">
+                <select class="form-control" ng-model="selected_patient" ng-change="gotopatient()">
+                    <option selected value="">Choose Patient</option>
+                    <option ng-repeat="patient in patientdata| filter:patientsearch" value="{{ patient._id }}">{{ patient.nic }}&emsp;&emsp; {{ patient.firstname}} {{patient.sirname }}&emsp;&emsp; {{patient.dateofbirth }}&emsp;&emsp; {{patient.bloodgroup}}</option>
+                </select>
                 <div class="input-group-btn">
-                    <button type="submit" name="submit" class="btn btn-warning btn-flat"><i class="fa fa-search"></i>
+                    <button type="gotopatient" name="gotopatient" class="btn btn-success btn-flat" ng-click="gotopatient()"><i class="fa fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
         </form>
     </div>
+    <div class="box box-primary" ng-show="selected_patient">
+        <label><h4> PCU Sheet for patient : {{ selected_patient_data.firstname }} {{selected_patient_data.sirname}}</h4>    </label>
+    </div>
     <div class="transparenta">
         <ul >
-            <li class="inline"><button ng-click="changeview(7)" class="btn btn-primary">Patient Details </button></li>
+            <!--<li class="inline"><button ng-click="changeview(7)" class="btn btn-primary">Patient Details </button></li>-->
             <li class="inline"><button ng-click="changeview(1)" class="btn btn-primary">Personal </button></li>
             <li class="inline"><button ng-click="changeview(2)" class="btn btn-primary">Admission Details</button></li>
             <li class="inline"><button ng-click="changeview(3)" class="btn btn-primary">Current Status</button></li>
-            <li class="inline"><button ng-click="changeview(4)" class="btn btn-primary">Prescription Details</button></li>
-            <li class="inline"><button ng-click="changeview(5)" class="btn btn-primary">Prescribed Drugs</button></li>
+            <li class="inline"><button ng-click="changeview(4)" class="btn btn-primary">Diagnosis Details</button></li>
+            <li class="inline"><button ng-click="changeview(5)" class="btn btn-primary">Prescriptions</button></li>
             <li class="inline"><button ng-click="changeview(6)" class="btn btn-primary">Lab Tests & Lab Results</button></li>
         </ul>
         <div class="transparenta">
@@ -38,7 +44,7 @@
             <div ng-show="view == 4" id="diagnosis" ng-include="'components/pcusheet/diagnosis/diagnosis.html'"></div>
             <div ng-show="view == 5" id="prescription" ng-include="'components/pcusheet/prescription/prescription.html'"></div>
             <div ng-show="view == 6" id="labtest" ng-include="'components/pcusheet/labtest/labtest.html'"></div>
-            <div ng-show="view == 7" id="patient" ng-include="'components/pcusheet/Patient/Patient.html'"></div>
+            <!--<div ng-show="view == 7" id="patient" ng-include="'components/pcusheet/Patient/Patient.html'"></div>-->
 
         </div>
         <!-- /.tab-content -->
