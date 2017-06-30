@@ -45,7 +45,7 @@ app.controller("pcuController", function ($scope,$rootScope, $http, $interval,Pa
     // $scope.searching = function () {
     //     $scope.patient_searching = true;
     // }
-    $scope.loadDiagnosis = function() {
+    $rootScope.loadDiagnosis = function() {
         if($rootScope.selected_patient) {
             DiagnosisService.getDiagnosis($rootScope.selected_patient)
                 .then(function (response) {
@@ -54,5 +54,5 @@ app.controller("pcuController", function ($scope,$rootScope, $http, $interval,Pa
                 });
         }
     };
-    $scope.loadDiagnosis();
+    $rootScope.loadDiagnosis();
 })

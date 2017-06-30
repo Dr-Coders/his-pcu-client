@@ -3,16 +3,17 @@
  */
 
 app.controller('DiagnosisController',['$scope','$rootScope','DiagnosisService','DoctorService','$filter',function ($scope,$rootScope,DiagnosisService,DoctorService,$filter) {
-    $scope.loadDiagnosis = function() {
+    $scope.loadDiagnosiss = function() {
+        console.log("Getting data diagnosis")
         if($rootScope.selected_patient) {
             DiagnosisService.getDiagnosis($rootScope.selected_patient)
                 .then(function (response) {
-                    console.log("I got the data I requested : " + response.data);
+                    console.log("I got the data I requested diagnosis : " + response.data[0]);
                     $scope.diagnosisdata = response.data;
                 });
         }
     };
-    $scope.loadDiagnosis();
+    $scope.loadDiagnosiss();
     $scope.previourDate = "";
 
 
@@ -23,8 +24,8 @@ app.controller('DiagnosisController',['$scope','$rootScope','DiagnosisService','
         console.log($scope.formData);
         DiagnosisService.addDiagnosis($scope.formData)
             .then(function(response) {
+                $rootScope.loadDiagnosis();
                 console.log("Add diagnosis response : " + response);
-                $scope.loadDiagnosis();
             });
     };
 

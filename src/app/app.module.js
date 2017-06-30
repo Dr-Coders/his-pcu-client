@@ -2,7 +2,7 @@
  * Created by Nirmal on 4/29/2017.
  */
 var app = angular.module("Route", ["ngRoute","ngCookies"])
-    .config(function ($routeProvider, $locationProvider) {
+    .config(function ($routeProvider, $locationProvider,$qProvider) {
         $routeProvider
             .when("/", {
                 templateUrl: "./components/home/home.html",
@@ -41,9 +41,10 @@ var app = angular.module("Route", ["ngRoute","ngCookies"])
             // .when("/pagenotfound", {
             //     templateUrl: "pages/error/404.html"
             // })
-            .otherwise({redirectTo: '/'})
+            .otherwise({redirectTo: '/'});
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
         });
+        $qProvider.errorOnUnhandledRejections(false);
     })
