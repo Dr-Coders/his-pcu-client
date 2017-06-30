@@ -11,23 +11,24 @@
 <section class="content">
     <div class="box box-primary">
         <form class="search-form">
-            <div class="input-group">
+            <div class="form-group">
                 <input type="text" name="search" class="form-control" ng-model="patientsearch" placeholder="Enter Patient ID">
                 <select class="form-control" ng-model="selected_patient" ng-change="gotopatient()">
                     <option selected value="">Choose Patient</option>
                     <option ng-repeat="patient in patientdata| filter:patientsearch" value="{{ patient._id }}">{{ patient.nic }}&emsp;&emsp; {{ patient.firstname}} {{patient.sirname }}&emsp;&emsp; {{patient.dateofbirth }}&emsp;&emsp; {{patient.bloodgroup}}</option>
                 </select>
-                <div class="input-group-btn">
-                    <button type="gotopatient" name="gotopatient" class="btn btn-success btn-flat" ng-click="gotopatient()"><i class="fa fa-arrow-right"></i>
-                    </button>
-                </div>
+                <!--<div class="input-group-btn">-->
+                    <!--<button type="gotopatient" name="gotopatient" class="btn btn-success btn-flat" ng-click="gotopatient()"><i class="fa fa-arrow-right"></i>-->
+                    <!--</button>-->
+                <!--</div>-->
             </div>
         </form>
     </div>
     <div class="box box-primary text-center" ng-show="selected_patient">
-        <label ><h4> PCU Sheet for patient : {{ selected_patient_data.firstname }} {{selected_patient_data.sirname}}</h4></label>
+        <label class="inline"><h4> PCU Sheet Of Patient : {{ selected_patient_data.firstname }} {{selected_patient_data.sirname}}</h4></label>
+        <button ng-click="selected_patient = null" class="pull-right btn btn-danger inline"><i class="glyphicon glyphicon-remove"></i></button>
     </div>
-    <div class="transparenta">
+    <div class="transparenta" ng-show="selected_patient">
         <ul >
             <!--<li class="inline"><button ng-click="changeview(7)" class="btn btn-primary">Patient Details </button></li>-->
             <li class="inline"><button ng-click="changeview(1)" class="btn btn-primary">Personal </button></li>
