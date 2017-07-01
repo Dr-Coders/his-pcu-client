@@ -1,115 +1,126 @@
 <div ng-controller="DiagnosisController">
     <section class="content-header">
-    <h1 class="pageHeader">
-        Prescription Details
-    </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#"> PCU Sheet</a></li>
-        <li class="active">Diagnosis Details</li>
-    </ol>
-</section>
+        <h1 class="pageHeader">
+            Prescription Details
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"> PCU Sheet</a></li>
+            <li class="active">Diagnosis Details</li>
+        </ol>
+    </section>
 
-<section class="content">
-    <div class="box box-success">
-        <div class="box-body">
-            <button class="btn btn-block btn-success btn-md" data-toggle="modal" data-target="#addModal">Add New Diagnosis Detail</button>
+    <section class="content">
+        <div class="box box-success">
+            <div class="box-body">
+                <button class="btn btn-block btn-success btn-md" data-toggle="modal" data-target="#addModal">Add New
+                    Diagnosis Detail
+                </button>
+            </div>
         </div>
-    </div>
-    <div class="box box-primary">
-        <div class="box-body">
-            <input type="text" ng-model="searchkey" placeholder="Search" class="form-control"/>
+        <div class="box box-primary">
+            <div class="box-body">
+                <div class="input-group">
+                    <span class="glyphicon glyphicon-search input-group-addon"></span>
+                    <input type="text" ng-model="searchkey" placeholder="Search" class="form-control"/>
+                </div>
+            </div>
         </div>
-    </div>
-    <ul class="timeline">
-        <li ng-repeat="diagnosis in diagnosisdata | orderBy:'-date' | filter:searchkey">
-            <ul class="timeline">
-                <!--timeline time label-->
+        <ul class="timeline">
+            <li ng-repeat="diagnosis in diagnosisdata | orderBy:'-date' | filter:searchkey">
+                <ul class="timeline">
+                    <!--timeline time label-->
 
-                <li class="time-label" ng-show="showDate(diagnosis.date)"><span class="bg-red">{{ formatDate(diagnosis.date) }}</span></li>
-                <!-- /.timeline-label -->
+                    <li class="time-label" ng-show="showDate(diagnosis.date)"><span class="bg-red">{{ formatDate(diagnosis.date) }}</span>
+                    </li>
+                    <!-- /.timeline-label -->
 
-                <!-- timeline item -->
-                <li>
-                    <!-- timeline icon -->
-                    <i class="fa fa-list-alt bg-blue"></i>
-                    <div class="timeline-item">
-                        <span class="time"><i class="fa fa-clock-o"></i> {{diagnosis.time}}</span>
+                    <!-- timeline item -->
+                    <li>
+                        <!-- timeline icon -->
+                        <i class="fa fa-list-alt bg-blue"></i>
+                        <div class="timeline-item">
+                            <span class="time"><i class="fa fa-clock-o"></i> {{diagnosis.time}}</span>
 
-                        <h3 class="timeline-header"><a href="#">{{diagnosis.title}}</a></h3>
+                            <h3 class="timeline-header"><a href="#">{{diagnosis.title}}</a></h3>
 
-                        <div class="timeline-body">
-                            {{ diagnosis.content }}
+                            <div class="timeline-body">
+                                {{ diagnosis.content }}
+                            </div>
+
+                            <div class="timeline-footer">
+                                <a class="btn btn-primary btn-md " ng-click="showDoctor(diagnosis.doctor._id)"
+                                   data-toggle="modal" data-target="#doctordetail"><i class="fa fa-stethoscope">
+                                </i> by {{diagnosis.doctor.firstname }} {{diagnosis.doctor.lastname }}</a>
+                            </div>
                         </div>
+                    </li>
+                </ul>
+            </li>
 
-                        <div class="timeline-footer">
-                            <a class="btn btn-primary btn-md " ng-click="showDoctor(diagnosis.doctor._id)" data-toggle="modal" data-target="#doctordetail"><i class="fa fa-stethoscope">
-                            </i> by {{diagnosis.doctor.firstname }} {{diagnosis.doctor.lastname }}</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </li>
-
-        <!-- END timeline item -->
-        <li class="time-label">
+            <!-- END timeline item -->
+            <li class="time-label">
             <span class="bg-green">
                 &nbsp;Registered&nbsp;
             </span>
-        </li>
+            </li>
 
-    </ul>
-</section>
+        </ul>
+    </section>
 
-<div id="addModal" class="modal fade" role="dialog">
-    <div class="modal-dialog ">
+    <div id="addModal" class="modal fade" role="dialog">
+        <div class="modal-dialog ">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Add New Diagnosis</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="doctor">Name of the Doctor</label>
-                        <!--<input type="text" class="form-control" id="doctorname" placeholder="Enter name"-->
-                               <!--ng-model="formData.doctor">-->
-                        <select id="doctor" class="form-control" ng-model="formData.doctor">
-                            <option value="" selected>Select a doctor</option>
-                            <option ng-repeat="doctor in doctordata" value="{{doctor._id}}" >{{ doctor.firstname }} {{ doctor.lastname }} -- Speciality : {{ doctor.speciality}}</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" class="form-control" id="title" placeholder="Enter title"
-                               ng-model="formData.title">
-                    </div>
-                    <div class="form-group">
-                        <label for="details">Details</label>
-                        <input type="text" class="form-control" id="details" placeholder="Enter details"
-                               ng-model="formData.content">
-                    </div>
-                    <div class="form-group">
-                        <label for="checkupTime">Checkup time</label>
-                        <input type="text" class="form-control" id="checkupTime" placeholder="Enter Checkup Time"
-                               ng-model="formData.time">
-                    </div>
-                    <div class="form-group">
-                        <label for="checkupDate">Checkup Date</label>
-                        <input type="text" class="form-control" id="checkupDate" placeholder="Enter Checkup Date"
-                               ng-model="formData.date">
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button ng-click="addDiagnosis()" class="btn btn-success pull-right" data-dismiss="modal">Add Diagnosis</button>
-                <button data-dismiss="modal" class="btn btn-warning pull-left">Close</button>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New Diagnosis</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="doctor">Name of the Doctor</label>
+                            <!--<input type="text" class="form-control" id="doctorname" placeholder="Enter name"-->
+                            <!--ng-model="formData.doctor">-->
+                            <select id="doctor" class="form-control" ng-model="formData.doctor">
+                                <option value="" selected>Select a doctor</option>
+                                <option ng-repeat="doctor in doctordata" value="{{doctor._id}}">{{ doctor.firstname }}
+                                    {{ doctor.lastname }} -- Speciality : {{ doctor.speciality}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" class="form-control" id="title" placeholder="Enter title"
+                                   ng-model="formData.title">
+                        </div>
+                        <div class="form-group">
+                            <label for="details">Details</label>
+                            <input type="text" class="form-control" id="details" placeholder="Enter details"
+                                   ng-model="formData.content">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkupTime">Checkup time</label>
+                            <input type="text" class="form-control" id="checkupTime" placeholder="Enter Checkup Time"
+                                   ng-model="formData.time">
+                        </div>
+                        <div class="form-group">
+                            <label for="checkupDate">Checkup Date</label>
+                            <input type="text" class="form-control" id="checkupDate" placeholder="Enter Checkup Date"
+                                   ng-model="formData.date">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button ng-click="addDiagnosis()" class="btn btn-success pull-right" data-dismiss="modal">Add
+                        Diagnosis
+                    </button>
+                    <button data-dismiss="modal" class="btn btn-warning pull-left">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <div id="doctordetail" class="modal fade" role="dialog">
         <div class="modal-dialog ">
@@ -124,7 +135,8 @@
                     <form>
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <label class="form-control" id="name">{{ selecteddoctordata.firstname }} {{ selecteddoctordata.lastname }}</label>
+                            <label class="form-control" id="name">{{ selecteddoctordata.firstname }} {{
+                                selecteddoctordata.lastname }}</label>
                         </div>
                         <div class="form-group">
                             <label for="speciality">Speciality</label>
@@ -136,19 +148,24 @@
                         </div>
                         <div class="form-group">
                             <div class="box">
-                                <div class="box-header"><h>Contact</h></div>
+                                <div class="box-header">
+                                    <h>Contact</h>
+                                </div>
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label for="mobile">Mobile</label>
-                                        <label class="form-control" id="mobile">{{ selecteddoctordata.contact_mobile }}</label>
+                                        <label class="form-control" id="mobile">{{ selecteddoctordata.contact_mobile
+                                            }}</label>
                                     </div>
                                     <div class="form-group">
                                         <label for="resident">Resident</label>
-                                        <label class="form-control" id="resident">{{ selecteddoctordata.contact_res }}</label>
+                                        <label class="form-control" id="resident">{{ selecteddoctordata.contact_res
+                                            }}</label>
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Address</label>
-                                        <label class="form-control" id="address">{{ selecteddoctordata.address }}</label>
+                                        <label class="form-control" id="address">{{ selecteddoctordata.address
+                                            }}</label>
                                     </div>
                                 </div>
                             </div>

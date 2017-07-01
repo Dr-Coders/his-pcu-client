@@ -23,9 +23,8 @@ app.controller('DiagnosisController',['$scope','$rootScope','DiagnosisService','
         $scope.formData.patient = $rootScope.selected_patient;
         console.log($scope.formData);
         DiagnosisService.addDiagnosis($scope.formData)
-            .then(function(response) {
+            .then(function() {
                 $rootScope.loadDiagnosis();
-                console.log("Add diagnosis response : " + response);
             });
     };
 

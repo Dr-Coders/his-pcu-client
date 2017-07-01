@@ -2,7 +2,7 @@
  * Created by Nirmal on 6/29/2017.
  */
 
-app.controller('PrescriptionController',['$scope','PrescriptionService','DoctorService','$filter',function ($scope,PrescriptionService,DoctorService,$filter) {
+app.controller('PrescriptionController',['$scope','$rootScope','PrescriptionService','DoctorService','DrugService','$filter',function ($scope,$rootScope,PrescriptionService,DoctorService,DrugService,$filter) {
     $scope.loadPrescription = function () {
         PrescriptionService.getPrescriptions()
             .then(function (response) {
@@ -13,12 +13,13 @@ app.controller('PrescriptionController',['$scope','PrescriptionService','DoctorS
     $scope.loadPrescription();
 
     //add diagnosis to the db
-    $scope.formData = {};
+
     $scope.addPrescription = function () {
         console.log($scope.formData);
+        $scope.formData.patient = $rootScope.selected_patient;
         PrescriptionService.addPrescription($scope.formData)
-            .then(function(response) {
-                console.log(response);
+            .then(function() {
+                $scope.loadPrescription();
             });
     };
 
@@ -57,6 +58,51 @@ app.controller('PrescriptionController',['$scope','PrescriptionService','DoctorS
     $scope.showDoctor = function (doctor_id) {
         $scope.selecteddoctordata = $filter('filter')($scope.doctordata, {_id: doctor_id })[0];
         console.log("Selected doctor : " + doctor_id + " data : " + $scope.selecteddoctordata.firstname);
+    }
+
+    $scope.formData = {};
+    $scope.formData.drugs = [{}];
+    $scope.loadDrug = function() {
+        DrugService.getDrugs()
+            .then(function (response) {
+                console.log("I got the data I requested : " + response.data);
+                $scope.drugdata = response.data;
+            });
+    };
+    $scope.loadDrug();
+
+    $scope.drugdetails = [{}];
+    $scope.whencount = [];
+    $scope.adddrugdetail = function(){
+        $scope.drugdetails.push({});
+        $scope.formData.drugs.push({});
+    }
+
+    $scope.addremovewhen = function (index,when) {
+        if($scope.whencount[index] == undefined){
+            $scope.formData.drugs[index].when= [];
+            $scope.formData.drugs[index].when[0]= false;
+            $scope.formData.drugs[index].when[1]= false;
+            $scope.formData.drugs[index].when[2]= false;
+            $scope.whencount[index] = 0;
+        }
+        if(!$scope.formData.drugs[index].when[when]){
+            $scope.formData.drugs[index].when[when] = true;
+            $scope.whencount[index]++;
+        }
+        else{
+            $scope.formData.drugs[index].when[when] = false;
+            $scope.whencount[index]--;
+        }
+
+        console.log("when selected : " + index + " when : " + when + " count : " + $scope.whencount[index]);
+    }
+
+    $scope.resetFromData = function () {
+        $scope.formData = {};
+        $scope.formData.drugs = [{}];
+        $scope.drugdetails = [{}];
+        $scope.whencount = [];
     }
 
 }]);
