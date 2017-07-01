@@ -1,1 +1,95 @@
-<h1>Status Page</h1>
+<div ng-controller="StatusController">
+    <section class="content-header">
+        <h1 class="pageHeader">
+            Current Status
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#"> PCU Sheet</a></li>
+            <li class="active">Current Status</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="box box-success transparenta">
+            <div class="box-header">
+                <h4>Diagnosis</h4>
+            </div>
+            <div class="box-body">
+                <div ng-repeat="diagnosis in diagnosisdata| orderBy:'-date' " ng-if="$index==0">
+                    <div class="form-group">
+                        <label for="dtitle">Title</label>
+                        <input type="text" id="dtitle" readonly ng-value="diagnosis.title" class="form-control">
+                    </div>
+                    <form class="form-inline form-group">
+                        <div class="form-group">
+                            <label for="ddate">Date</label>&emsp;
+                            <input type="text" id="ddate" readonly ng-value="diagnosis.date" class="form-control">
+                        </div>
+                        &emsp;&emsp;&emsp;
+                        <div class="form-group">
+                            <label for="dtime">Time</label>&emsp;
+                            <input type="text" id="dtime" readonly ng-value="diagnosis.time" class="form-control">
+                        </div>
+                    </form>
+                    <div class="form-group">
+                        <label for="ddetail">Details</label>
+                        <input type="text" id="ddetail" readonly ng-value="diagnosis.content" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="ddoctor">Doctor</label>
+                        <input type="text" id="ddoctor" readonly ng-value="diagnosis.doctor.firstname + ' ' + diagnosis.doctor.lastname" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box box-success transparenta">
+            <div class="box-header">
+                <h4>Prescription</h4>
+            </div>
+            <div class="box-body">
+                <div ng-repeat="prescription in prescriptiondata| orderBy:'-date' " ng-if="$index==0">
+                    <form class="form-inline form-group">
+                        <div class="form-group">
+                            <label for="date">Date</label>&emsp;
+                            <input type="text" id="date" readonly ng-value="prescription.date" class="form-control">
+                        </div>
+                        &emsp;&emsp;&emsp;
+                        <div class="form-group">
+                            <label for="time">Time</label>&emsp;
+                            <input type="text" id="time" readonly ng-value="prescription.time" class="form-control">
+                        </div>
+                    </form>
+                    <div class="form-group">
+                        <ul>
+                            <li ng-repeat="drug in prescription.drugs">
+                                <p>{{ drug.drug.name }} -- {{ drug.drug.quantitypertablet }}</p>
+                                <p>&emsp;&emsp;{{ drug.dose }} tablet{{ drug.dose > 1 ? 's' : ''}} {{ drug.meal }} meal </p>
+                                <p>&emsp;&emsp;In
+                                <p ng-show="drug.when[0] == 'true'">&emsp;&emsp;&emsp;&emsp;Morning</p>
+                                <p ng-show="drug.when[1] == 'true'">&emsp;&emsp;&emsp;&emsp;Noon</p>
+                                <p ng-show="drug.when[2] == 'true'">&emsp;&emsp;&emsp;&emsp;Night</p>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-group">
+                        <label for="doctor">Doctor</label>
+                        <input type="text" id="doctor" readonly ng-value="prescription.doctor.firstname + ' ' + prescription.doctor.lastname" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="box box-success transparenta">
+            <div class="box-header">
+                <h4>Lab Test</h4>
+            </div>
+            <div class="box-body">
+
+            </div>
+        </div>
+    </section>
+</div>

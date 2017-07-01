@@ -49,7 +49,7 @@
                                 <ul>
                                     <li ng-repeat="drug in prescription.drugs">
                                         <p>{{ drug.drug.name }} -- {{ drug.drug.quantitypertablet }}</p>
-                                        <p>&emsp;&emsp;Get {{ drug.dose }} tablet{{ drug.dose > 1 ? 's' : ''}} {{ drug.meal }} meal </p>
+                                        <p>&emsp;&emsp;{{ drug.dose }} tablet{{ drug.dose > 1 ? 's' : ''}} {{ drug.meal }} meal </p>
                                         <p>&emsp;&emsp;In
                                         <p ng-show="drug.when[0] == 'true'">&emsp;&emsp;&emsp;&emsp;Morning</p>
                                         <p ng-show="drug.when[1] == 'true'">&emsp;&emsp;&emsp;&emsp;Noon</p>
