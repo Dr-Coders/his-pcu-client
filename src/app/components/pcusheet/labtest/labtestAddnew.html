@@ -1,46 +1,54 @@
-<div ng-controller="labtestController">
-    <section class="content-header">
-    <h1 class="pageHeader">
-        Add New LabTest
-    </h1>
-</section>
+<!--<div ng-controller="labtestController">-->
+    <!--<section class="content-header">-->
+    <!--<h1 class="pageHeader">-->
+        <!--Add New LabTest-->
+    <!--</h1>-->
+<!--</section>-->
 
 <section class="content">
     <div class="box box-primary">
         <form role="form">
+            <div class="box-header">
+                <h1 class="pageHeader">
+                    Add New LabTest
+                </h1>
+            </div>
             <div class="box-body">
                 <div class="form-group">
                     <label for="txt_medicase">Medical Case </label>
-                    <input type="text" class="form-control" id="txt_medicase" placeholder="Enter here">
+                    <input type="text" class="form-control" id="txt_medicase" ng-model="labtests.medicalcase" placeholder="Enter here">
                 </div>
                 <div class="form-group">
                     <label for="txt_labdoctor">Name of the Doctor</label>
-                    <input type="text" class="form-control" id="txt_labdoctor" placeholder="Enter here">
+                    <select id="txt_labdoctor" class="form-control" ng-model="labtests.doctor">
+                        <option value="" selected>Select a doctor</option>
+                        <option ng-repeat="doctor in doctordata" value="{{doctor._id}}" >{{ doctor.firstname }} {{ doctor.lastname }} -- Speciality : {{ doctor.speciality}}</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="txt_testname">Lab Test Name</label>
-                    <input type="text" class="form-control" id="txt_testname" placeholder="Test Name">
+                    <input type="text" class="form-control" id="txt_testname" placeholder="Test Name" ng-model="labtests.labtestname">
                 </div>
                 <div class="form-group">
                     <label for="txt_labdate">Date </label>
-                    <input type="text" class="form-control" id="txt_labdate" placeholder="Enter date">
+                    <input type="text" class="form-control" id="txt_labdate" placeholder="Enter date" ng-model="labtests.date">
                 </div>
+                <!--<div class="form-group">-->
+                    <!--<label for="txt_labresult">Lab Test Result </label>-->
+                    <!--&lt;!&ndash;<textarea class="form-control" id="txt_labresult" rows="5" placeholder="Enter Result"></textarea>&ndash;&gt;-->
+                    <!--<input type="file" id="txt_labresult" name="txt_labresult" ng-model="labtests.labresult"/>-->
                 <div class="form-group">
-                    <label for="txt_labresult">Lab Test Result </label>
-                    <textarea class="form-control" id="txt_labresult" rows="5" placeholder="Enter Result"></textarea>
+                    <label for="txt_labstatus">Lab Test Result Status </label>
+                    <input type="text" class="form-control" id="txt_labstatus" placeholder="pending" ng-model="labtests.labresultstatus">
                 </div>
-                <div class="form-group">
-                    <label for="txt_interpret">Test Interpretation </label>
-                    <input type="text" class="form-control" id="txt_interpret" placeholder="Enter Interpretation">
-                </div>
-            </div>
 
-            <div class="box-footer">
-                <a href="/afproject/pcusheet#prescription" ><button type="submit" class="btn btn-danger">Cancel</button></a>
-                <button type="submit" class="btn btn-success pull-right">Add Entry</button>
-            </div>
+                </div>
+            <!--<div class="box-footer">-->
+                <!--<a href="/afproject/pcusheet#prescription" ><button type="submit" class="btn btn-danger">Cancel</button></a>-->
+                <!--<button type="submit" class="btn btn-success pull-right" ng-click="addEntry()">Add Entry</button>-->
+            <!--</div>-->
         </form>
     </div>
 </section>
-</div>
+<!--</div>-->
 
