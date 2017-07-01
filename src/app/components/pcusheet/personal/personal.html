@@ -1,0 +1,273 @@
+<div ng-controller="PersonalController">
+    <section class="content">
+        <!--administrative form-->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Administrative Details</h3>
+            </div>
+
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>
+                            <label class="col-sm-4 control-label">First Name :</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="fname"
+                                       ng-model="selected_patient_data.firstname" ng-disabled="updating==false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label class="col-sm-4 control-label">Surname :</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="sname"
+                                       ng-model="selected_patient_data.sirname" ng-disabled="updating==false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div>
+                            <label class="col-sm-4 control-label">NIC :</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="nic" ng-model="selected_patient_data.nic" ng-disabled="updating==false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Date of Birth :</label>
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'"
+                                           id="dateofbirth" ng-model="selected_patient_data.dateofbirth" ng-disabled="updating==false">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--gender and maritail row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Gender :</label>
+                            <div class="col-sm-12">
+                                <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
+                                        tabindex="-1" aria-hidden="true" ng-model="selected_patient_data.gender" ng-disabled="updating==false">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Marital Status:</label>
+                            <div class="col-sm-12">
+                                <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
+                                        tabindex="-1" aria-hidden="true" ng-model="selected_patient_data.maritalstatus" ng-disabled="updating==false">
+                                    <option value="married">Married</option>
+                                    <option value="unmarried">Unmarried</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--div box-body-->
+            </div>
+            <!--div administrative details header-->
+        </div>
+
+
+        <!--Contact information details-->
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Contact Details</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Address :</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="address"
+                                       ng-model="selected_patient_data.address" ng-disabled="updating==false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Contact(res) :</label>
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;"
+                                           id="contact_res" ng-model="selected_patient_data.contact_res" ng-disabled="updating==false">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-5 control-label">Contact(mobile) :</label>
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;"
+                                           id="contact_mobile" ng-model="selected_patient_data.contact_mobile" ng-disabled="updating==false">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Email :</label>
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                                    <input type="email" class="form-control" placeholder="Email" id="email"
+                                           ng-model="selected_patient_data.email" ng-disabled="updating==false">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+                <!--div contact information-->
+            </div>
+        </div>
+
+
+        <!--guardian information-->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Guardian Details</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Name:</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="guardian_name"
+                                       ng-model="selected_patient_data.guardian_name" ng-disabled="updating==false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Relationship :</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="relationship"
+                                       ng-model="selected_patient_data.guardian_relationship" ng-disabled="updating==false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Contact(res) :</label>
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;"
+                                           id="guardian_contact_res"
+                                           ng-model="selected_patient_data.guardian_contact_res" ng-disabled="updating==false">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-5 control-label">Contact(mobile) :</label>
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <input type="text" class="form-control"
+                                           data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;"
+                                           id="guardian_contact_mobile"
+                                           ng-model="selected_patient_data.guardian_contact_mobile" ng-disabled="updating==false">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--div Guardian information-->
+        </div>
+
+        <!--Medical details-->
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Medical Details</h3>
+            </div>
+            <div class="box-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Height :</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="height"
+                                       ng-model="selected_patient_data.height" ng-disabled="updating==false">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Weight :</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="weight"
+                                       ng-model="selected_patient_data.weight" ng-disabled="updating==false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">Blood Group :</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control" id="bloodgroup"
+                                       ng-model="selected_patient_data.bloodgroup" ng-disabled="updating==false">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="box-footer">
+            <button ng-show="updating == true" type="submit" class="btn btn-danger" ng-click="updating = !updating">Cancel</button>
+            <button ng-show="updating == false" type="submit" class="btn btn-primary pull-right" ng-click="updating = !updating">
+                Edit
+            </button>
+            <button ng-show="updating == true" type="submit" class="btn btn-success pull-right" ng-click="UpdatePatient(selected_patient_data)">
+                Update
+            </button>
+        </div>
+
+    </section>
+</div>

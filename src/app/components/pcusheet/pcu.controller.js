@@ -21,14 +21,14 @@ app.controller("pcuController", function ($scope,$rootScope, $http, $interval,Pa
         $scope.view = view;
     }
 
-    $scope.loadPatient = function() {
+    $rootScope.loadPatient = function() {
         PatientService.getPatients()
             .then(function (response) {
                 console.log("I got the data I requested : " + response.data);
                 $scope.patientdata = response.data;
             });
     };
-    $scope.loadPatient();
+    $rootScope.loadPatient();
 
     $scope.gotopatient = function () {
         $scope.patient_searching = false;
