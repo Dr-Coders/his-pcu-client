@@ -1,0 +1,25 @@
+<section class="content-header">
+    <h1 class="pageHeader">
+        <a href="/afproject/pcusheet" target="_self">PCU Sheet</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li>PCU Sheet</li>
+        <li>Lab Test and Results</li>
+        <li class="active">Add Lab Test and Result</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="nav-tabs-custom transparenta">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#add_new" data-toggle="tab">Add New Lab Test</a></li>
+            <li><a href="#add_result" data-toggle="tab">Add Lab Result</a></li>
+        </ul>
+        <div class="tab-content transparenta">
+            <div class="tab-pane active" id="add_new" ng-include="'../pages/pcusheet/labtestAddnew.html'"></div>
+            <div class="tab-pane" id="add_result" ng-include="'../pages/pcusheet/labtestAddresult.html'"></div>
+        </div>
+        <!-- /.tab-content -->
+    </div>
+</section>
